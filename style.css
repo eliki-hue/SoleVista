@@ -41,7 +41,7 @@ header .shopping{
     top:0;
     left:calc(75%);
     background-color: black;
-    width: 500px;
+    width: calc(25%);
     height: 100vh;
     color: white;
     display: none;
@@ -74,8 +74,21 @@ header .shopping{
     background-color: red;
     padding:3px ;
     top: -5px;
-    border-radius: 50%;
-    
-   
+    border-radius: 50%;  
 
+}
+.cart-buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.closeShopping, .pay{
+    width:40%;
+    height: 30px;
+    background-color: red;
+    /* padding: auto; */
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    text-align: center;
 }
