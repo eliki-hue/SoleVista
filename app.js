@@ -1,7 +1,17 @@
 let list = document.querySelector('.list');
-let cart = document.querySelector('cart-card')
+let cart = document.querySelector('.cart-card')
+let openShopping = document.querySelector('.shopping');
+let closeShopping = document.querySelector('.closeShopping');
 
+openShopping.addEventListener('click', ()=>{
+    // body.classList.add('active')
+    cart.style.display='block'
+})
 
+closeShopping.addEventListener('click', ()=>{
+    // body.classList.remove('active')
+    cart.style.display='none'
+})
 
 let products = [
     {
@@ -111,12 +121,8 @@ function addProduct(){
         list.appendChild(newDiv);
     })
 }
-// let newChild =`{
-//     id:4,
-//     name :'product name 4',
-//     image:'scroll.jpeg',
-//     price:4000
-// }`
-// list.appendChild(newChild)
+
 addProduct()
+
+
 

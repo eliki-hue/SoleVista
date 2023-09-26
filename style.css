@@ -21,9 +21,9 @@ body{
     height: 199px;
 }
 .card-body{
-    background-color: rgba(245, 245, 245, 0.722);
+    /* background-color: rgba(245, 245, 245, 0.722); */
     /* width: 100%; */
-    padding-bottom: 19px;
+    padding-bottom: 5px;
 }
 header{
     /* text-align: right; */
@@ -46,6 +46,14 @@ header .shopping{
     color: white;
     display: none;
     transition: 0.5s;
+}
+.card-body button{
+    width: 100%;
+    padding: 10px;
+    font-weight: bolder;
+    color: white;
+    background-color: black;
+
 }
 .checkout{
     background-color: #e3e7e8;
