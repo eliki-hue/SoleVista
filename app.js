@@ -13,6 +13,9 @@ closeShopping.addEventListener('click', ()=>{
     cart.style.display='none'
 })
 
+
+
+
 let products = [
     {
         id:1,
@@ -115,7 +118,7 @@ function addProduct(){
         <div class="title">${value.name}</div>
         <div class="price">Price: Ksh. ${value.price.toLocaleString()}</div>
         <div class="card-body">
-            <button onclick="addToCart(${key})">Add to Cart</button>
+            <button onclick="addToCart('${value.id},${value.image}','${value.name}', ${value.price})">Add to Cart</button>
         </div>
         `;
         list.appendChild(newDiv);
@@ -123,6 +126,77 @@ function addProduct(){
 }
 
 addProduct()
+
+// Initialize an empty shopping cart
+const cartItem = [];
+
+// Function to add a product to the cart
+function addToCart(id,image,productName, price) {
+    const product = {
+        id:id,
+        image:image,
+        name: productName,
+        price: price,
+    };
+
+    cartItem.push(product);
+
+    // Update the cart display
+    updateCartDisplay();
+}
+
+// Function to update the cart display
+// function updateCartDisplay() {
+//     const cartList = document.querySelector('.cartlist');
+//     cartList.innerHTML = ''; // Clear the existing cart list
+
+//     for (const item of cartItem) {
+//         const listItem = document.createElement('li');
+//         listItem.innerText = `<img src="${item.image}"/> ${item.name} - $${item.price}`;
+//         cartList.appendChild(listItem);
+//         console.log("added")
+//     }
+// }
+
+
+// ... (previous code)
+
+// Function to update the cart display
+function updateCartDisplay() {
+    const cartList = document.querySelector('.cartlist');
+    cartList.innerHTML = ''; // Clear the existing cart list
+
+    for (const item of cartItem) {
+        const listItem = document.createElement('li');
+        
+        // Create an image element and set its attributes
+        const productImage = document.createElement('img');
+        productImage.src = `images/${item.image}`; // Assuming there is an 'image' property in your 'cartItem' objects
+        productImage.alt = item.name;
+        
+        // Create a div element for the product details
+        const productDetails = document.createElement('div');
+        productDetails.classList.add('product-details');
+        productDetails.innerHTML = `
+        <div>
+            <div class="product-name">${item.name}</div>
+            <div class="product-price">$${item.price}</div>
+        </div>
+        <button onclick=removeCartItem>remove</button>
+        `;
+        
+        // Append the image and product details to the list item
+        listItem.appendChild(productImage);
+        listItem.appendChild(productDetails);
+        
+        // Append the list item to the cart list
+        cartList.appendChild(listItem);
+    }
+}
+
+// ... (rest of the code)
+
+
 
 
 

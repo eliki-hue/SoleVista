@@ -92,3 +92,11 @@ header .shopping{
     font-weight: bolder;
     text-align: center;
 }
+.cartlist li{
+    display: flex;
+    margin-bottom: 15px;
+}
+.cartlist img{
+    width:40px;
+    margin-right:5px ;
+}
