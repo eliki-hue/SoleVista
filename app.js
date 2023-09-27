@@ -118,7 +118,7 @@ function addProduct(){
         <div class="title">${value.name}</div>
         <div class="price">Price: Ksh. ${value.price.toLocaleString()}</div>
         <div class="card-body">
-            <button onclick="addToCart('${value.id},${value.image}','${value.name}', ${value.price})">Add to Cart</button>
+            <button onclick="addToCart('${value.image}','${value.name}', ${value.price})">Add to Cart</button>
         </div>
         `;
         list.appendChild(newDiv);
@@ -131,9 +131,9 @@ addProduct()
 const cartItem = [];
 
 // Function to add a product to the cart
-function addToCart(id,image,productName, price) {
+function addToCart(image,productName, price) {
     const product = {
-        id:id,
+        
         image:image,
         name: productName,
         price: price,
@@ -162,40 +162,81 @@ function addToCart(id,image,productName, price) {
 // ... (previous code)
 
 // Function to update the cart display
+// function updateCartDisplay() {
+//     const cartList = document.querySelector('.cartlist');
+//     cartList.innerHTML = ''; // Clear the existing cart list
+
+//     for (const item of cartItem) {
+//         const listItem = document.createElement('li');
+        
+//         // Create an image element and set its attributes
+//         const productImage = document.createElement('img');
+//         productImage.src = `images/${item.image}`; // Assuming there is an 'image' property in your 'cartItem' objects
+//         productImage.alt = item.name;
+        
+//         // Create a div element for the product details
+//         const productDetails = document.createElement('div');
+//         productDetails.classList.add('product-details');
+//         productDetails.innerHTML = `
+//         <div>
+//             <div class="product-name">${item.name}</div>
+//             <div class="product-price">$${item.price}</div>
+//         </div>
+//         <button onclick=removeCartItem>remove</button>
+//         `;
+        
+//         // Append the image and product details to the list item
+//         listItem.appendChild(productImage);
+//         listItem.appendChild(productDetails);
+        
+//         // Append the list item to the cart list
+//         cartList.appendChild(listItem);
+//     }
+// }
+
+// ... (rest of the code)
 function updateCartDisplay() {
     const cartList = document.querySelector('.cartlist');
     cartList.innerHTML = ''; // Clear the existing cart list
 
-    for (const item of cartItem) {
+    for (let i = 0; i < cartItem.length; i++) {
+        const item = cartItem[i];
         const listItem = document.createElement('li');
-        
+
         // Create an image element and set its attributes
         const productImage = document.createElement('img');
         productImage.src = `images/${item.image}`; // Assuming there is an 'image' property in your 'cartItem' objects
         productImage.alt = item.name;
-        
+
         // Create a div element for the product details
         const productDetails = document.createElement('div');
         productDetails.classList.add('product-details');
         productDetails.innerHTML = `
-        <div>
             <div class="product-name">${item.name}</div>
             <div class="product-price">$${item.price}</div>
-        </div>
-        <button onclick=removeCartItem>remove</button>
         `;
-        
-        // Append the image and product details to the list item
+
+        // Create a button to remove the item
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            removeCartItem(i);
+        });
+
+        // Append the image, product details, and remove button to the list item
         listItem.appendChild(productImage);
         listItem.appendChild(productDetails);
-        
+        listItem.appendChild(removeButton);
+
         // Append the list item to the cart list
         cartList.appendChild(listItem);
     }
 }
 
-// ... (rest of the code)
-
+function removeCartItem(index) {
+    cartItem.splice(index, 1); // Remove the item at the specified index
+    updateCartDisplay(); // Update the cart display after removal
+}
 
 
 
