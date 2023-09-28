@@ -145,59 +145,69 @@ function addToCart(image,productName, price) {
     updateCartDisplay();
 }
 
-// Function to update the cart display
+
+//  let cartCount =0;
+//  let totalCost =0;
+ 
 // function updateCartDisplay() {
 //     const cartList = document.querySelector('.cartlist');
 //     cartList.innerHTML = ''; // Clear the existing cart list
 
-//     for (const item of cartItem) {
+//     for (let i = 0; i < cartItem.length; i++) {
+//         const item = cartItem[i];
 //         const listItem = document.createElement('li');
-//         listItem.innerText = `<img src="${item.image}"/> ${item.name} - $${item.price}`;
-//         cartList.appendChild(listItem);
-//         console.log("added")
-//     }
-// }
 
-
-// ... (previous code)
-
-// Function to update the cart display
-// function updateCartDisplay() {
-//     const cartList = document.querySelector('.cartlist');
-//     cartList.innerHTML = ''; // Clear the existing cart list
-
-//     for (const item of cartItem) {
-//         const listItem = document.createElement('li');
-        
 //         // Create an image element and set its attributes
 //         const productImage = document.createElement('img');
 //         productImage.src = `images/${item.image}`; // Assuming there is an 'image' property in your 'cartItem' objects
 //         productImage.alt = item.name;
-        
+
 //         // Create a div element for the product details
 //         const productDetails = document.createElement('div');
 //         productDetails.classList.add('product-details');
 //         productDetails.innerHTML = `
-//         <div>
 //             <div class="product-name">${item.name}</div>
 //             <div class="product-price">$${item.price}</div>
-//         </div>
-//         <button onclick=removeCartItem>remove</button>
 //         `;
-        
-//         // Append the image and product details to the list item
+//         // Calculate and update the cart count and total cost
+//         cartCount++;
+//         totalCost += item.price;
+//         // Create a button to remove the item
+//         const removeButton = document.createElement('button');
+//         removeButton.textContent = 'Remove';
+//         removeButton.addEventListener('click', () => {
+//             removeCartItem(i);
+//         });
+
+//         // Append the image, product details, and remove button to the list item
 //         listItem.appendChild(productImage);
 //         listItem.appendChild(productDetails);
-        
+//         listItem.appendChild(removeButton);
+
 //         // Append the list item to the cart list
 //         cartList.appendChild(listItem);
 //     }
+
+//     // Display cart count and total cost
+//     document.querySelector('.cart-count').textContent = cartCount;
+//     document.querySelector('.total-cost').textContent = `$${totalCost.toFixed(2)}`;
 // }
 
-// ... (rest of the code)
+function removeCartItem(index) {
+    cartItem.splice(index, 1); // Remove the item at the specified index
+    updateCartDisplay(); // Update the cart display after removal
+}
+
+
+// ... (previous code)
+
+// Function to update the cart display, count, and total cost
 function updateCartDisplay() {
     const cartList = document.querySelector('.cartlist');
     cartList.innerHTML = ''; // Clear the existing cart list
+
+    let cartCount = 0; // Initialize cart count
+    let totalCost = 0; // Initialize total cost
 
     for (let i = 0; i < cartItem.length; i++) {
         const item = cartItem[i];
@@ -213,7 +223,7 @@ function updateCartDisplay() {
         productDetails.classList.add('product-details');
         productDetails.innerHTML = `
             <div class="product-name">${item.name}</div>
-            <div class="product-price">$${item.price}</div>
+            <div class="product-price">$${item.price.toFixed(2)}</div>
         `;
 
         // Create a button to remove the item
@@ -230,13 +240,24 @@ function updateCartDisplay() {
 
         // Append the list item to the cart list
         cartList.appendChild(listItem);
+
+        // Calculate and update the cart count and total cost
+        cartCount++;
+        totalCost += item.price;
     }
+
+    // Display cart count and total cost
+    document.querySelector('.cart-count-1').textContent = cartCount;
+    document.querySelector('.cart-count').textContent = cartCount;
+    document.querySelector('.total-cost').textContent = `$${totalCost.toFixed(2)}`;
 }
 
-function removeCartItem(index) {
-    cartItem.splice(index, 1); // Remove the item at the specified index
-    updateCartDisplay(); // Update the cart display after removal
-}
+// ... (rest of your code, including addToCart and removeCartItem functions)
+
+// Initial call to updateCartDisplay to populate the cart when the page loads
+updateCartDisplay();
+
+
 
 
 
