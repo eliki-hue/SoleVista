@@ -257,6 +257,32 @@ function updateCartDisplay() {
 // Initial call to updateCartDisplay to populate the cart when the page loads
 updateCartDisplay();
 
+// m-pesa intergration
+
+const axios = require('axios');
+
+const mpesaEndpoint = 'YOUR_MPESA_API_ENDPOINT';
+const apiKey = 'YOUR_API_KEY';
+
+const paymentData = {
+    amount: '10', // Amount to be paid
+    phoneNumber: 'PHONE_NUMBER', // Customer's phone number
+    // Other required parameters
+};
+
+axios.post(mpesaEndpoint, paymentData, {
+    headers: {
+        Authorization: `Bearer ${apiKey}`,
+    },
+})
+    .then((response) => {
+        // Handle the response from M-Pesa API, which may include a payment URL or payment details
+        console.log(response.data);
+    })
+    .catch((error) => {
+        // Handle any errors that occur during the payment request
+        console.error(error);
+    });
 
 
 

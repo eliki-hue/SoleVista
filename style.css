@@ -95,8 +95,13 @@ header .shopping{
 .cartlist li{
     display: flex;
     margin-bottom: 15px;
+    /* justify-content:stretch; */
 }
 .cartlist img{
     width:40px;
     margin-right:5px ;
+}
+.cartlist button{
+    background-color: red;
+    margin-left: 70px;
 }
