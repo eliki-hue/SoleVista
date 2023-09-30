@@ -103,5 +103,14 @@ header .shopping{
 }
 .cartlist button{
     background-color: red;
-    margin-left: 70px;
+    margin-left: 10%;
+}
+.quantity-control{
+    background-color:white;
+    display: flex;
+    margin-left: 15px;
+    color: black;
+    justify-content: space-evenly;
+    width: 80px;
+    align-items: center;
 }

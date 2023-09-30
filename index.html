@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adding elements in JS</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="shopping" >
+            <div class="shopping row" >
                 <img src="images/cart-logo-green-removebg-preview.png"  alt="">
                 <span class="quantity cart-count-1">0</span>
             </div>
             
         </header>
-        <div class="cart-card">
+        <div class="cart-card card">
             <h4>Your cart items</h4>
             <ul class="cartlist"></ul>
             <div class="checkout">
@@ -33,14 +41,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-11">
                 <div class="list">
 
                 </div>
             </div>
         </div>
     </div>
-
-  <script src="app.js"></script>  
+    <script src="app.js"></script>
+    <!-- <script src="cart.js"></script> -->
+    
 </body>
 </html>
