@@ -46,6 +46,7 @@ header .shopping{
     color: white;
     display: none;
     transition: 0.5s;
+    z-index: 9999;
 }
 .card-body button{
     width: 100%;

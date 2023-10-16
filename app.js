@@ -5,7 +5,8 @@ let closeShopping = document.querySelector('.closeShopping');
 
 openShopping.addEventListener('click', ()=>{
     // body.classList.add('active')
-    cart.style.display='block'
+    cart.style.display='block';
+    // cart.style.'z-index'="9999";
 })
 
 closeShopping.addEventListener('click', ()=>{
