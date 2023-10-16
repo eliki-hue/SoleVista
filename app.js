@@ -125,25 +125,49 @@ function addProduct(){
     })
 }
 
+
+// Update the addToCart function to check for existing items in the cart
+function addToCart(image, productName, price) {
+    const product = {
+        image: image,
+        name: productName,
+        price: price,
+    };
+
+    // Check if the same product already exists in the cart
+    const existingProduct = cartItem.find(item => item.image === image && item.name === productName && item.price === price);
+
+    if (existingProduct) {
+        // Increment the quantity if the product exists
+        existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+    } else {
+        // Add the product to the cart
+        cartItem.push(product);
+    }
+
+    // Update the cart display
+    updateCartDisplay();
+}
+
 addProduct()
 
 // Initialize an empty shopping cart
 const cartItem = [];
 
 // Function to add a product to the cart
-function addToCart(image,productName, price) {
-    const product = {
+// function addToCart(image,productName, price) {
+//     const product = {
         
-        image:image,
-        name: productName,
-        price: price,
-    };
+//         image:image,
+//         name: productName,
+//         price: price,
+//     };
 
-    cartItem.push(product);
+//     cartItem.push(product);
 
-    // Update the cart display
-    updateCartDisplay();
-}
+//     // Update the cart display
+//     updateCartDisplay();
+// }
 
 
 //  let cartCount =0;
@@ -193,10 +217,10 @@ function addToCart(image,productName, price) {
 //     document.querySelector('.total-cost').textContent = `$${totalCost.toFixed(2)}`;
 // }
 
-function removeCartItem(index) {
-    cartItem.splice(index, 1); // Remove the item at the specified index
-    updateCartDisplay(); // Update the cart display after removal
-}
+// function removeCartItem(index) {
+//     cartItem.splice(index, 1); // Remove the item at the specified index
+//     updateCartDisplay(); // Update the cart display after removal
+// }
 
 
 // ... (previous code)
@@ -215,14 +239,14 @@ function updateCartDisplay() {
 
         // Create an image element and set its attributes
         const productImage = document.createElement('img');
-        productImage.src = `images/${item.image}`; // Assuming there is an 'image' property in your 'cartItem' objects
+        productImage.src = `images/${item.image}`;
         productImage.alt = item.name;
 
         // Create a div for quantity control
         const quantityDiv = document.createElement('div');
         quantityDiv.classList.add('quantity-control');
 
-        // Create buttons for increasing and decreasing quantity
+        // // Create buttons for increasing and decreasing quantity
         const increaseButton = document.createElement('button');
         increaseButton.textContent = '+';
         increaseButton.addEventListener('click', () => {
@@ -234,6 +258,7 @@ function updateCartDisplay() {
         decreaseButton.addEventListener('click', () => {
             decreaseQuantity(i);
         });
+
 
         // Create a span to display the quantity
         const quantitySpan = document.createElement('span');
@@ -249,7 +274,7 @@ function updateCartDisplay() {
         productDetails.classList.add('product-details');
         productDetails.innerHTML = `
             <div class="product-name">${item.name}</div>
-            <div class="product-price">$${item.price.toFixed(2)}</div>
+            <div class="product-price">$${(item.price * (item.quantity || 1)).toFixed(2)}</div>
         `;
 
         // Create a button to remove the item
@@ -262,64 +287,68 @@ function updateCartDisplay() {
         // Append the image, product details, and remove button to the list item
         listItem.appendChild(productImage);
         listItem.appendChild(productDetails);
-
-        // Append the quantity div to the list item
         listItem.appendChild(quantityDiv);
-
         listItem.appendChild(removeButton);
-
-         
 
         // Append the list item to the cart list
         cartList.appendChild(listItem);
-        
-        // Calculate and update the cart count and total cost
+
+        // Update the cart count and total cost
         cartCount += item.quantity || 1; // Default to 1 if quantity is not set
         totalCost += item.price * (item.quantity || 1); // Default to 1 if quantity is not set
-
-
-        // Calculate and update the cart count and total cost
-        cartCount++;
-        totalCost += item.price;
     }
 
     // Display cart count and total cost
     document.querySelector('.cart-count-1').textContent = cartCount;
     document.querySelector('.cart-count').textContent = cartCount;
-    document.querySelector('.total-cost').textContent = `$${totalCost.toFixed(2)}`;
+    document.querySelector('.total-cost').textContent = `Ksh.${totalCost.toFixed(2)}`;
 }
 
-// ... (rest of your code, including addToCart and removeCartItem functions)
+// Function to increase the quantity of an item in the cart
+function increaseQuantity(index) {
+    cartItem[index].quantity = (cartItem[index].quantity || 1) + 1;
+    updateCartDisplay();
+}
 
+// Function to decrease the quantity of an item in the cart
+function decreaseQuantity(index) {
+    if (cartItem[index].quantity > 1) {
+        cartItem[index].quantity -= 1;
+    } else {
+        // Remove the item if the quantity becomes 0
+        cartItem.splice(index, 1);
+    }
+    updateCartDisplay();
+}
 // Initial call to updateCartDisplay to populate the cart when the page loads
 updateCartDisplay();
 
 // m-pesa intergration
 
-const axios = require('axios');
+// const axios = require('axios');
 
-const mpesaEndpoint = 'YOUR_MPESA_API_ENDPOINT';
-const apiKey = 'YOUR_API_KEY';
+// const mpesaEndpoint = 'YOUR_MPESA_API_ENDPOINT';
+// const apiKey = 'YOUR_API_KEY';
 
-const paymentData = {
-    amount: '10', // Amount to be paid
-    phoneNumber: 'PHONE_NUMBER', // Customer's phone number
-    // Other required parameters
-};
+// const paymentData = {
+//     amount: '10', // Amount to be paid
+//     phoneNumber: 'PHONE_NUMBER', // Customer's phone number
+//     // Other required parameters
+// };
 
-axios.post(mpesaEndpoint, paymentData, {
-    headers: {
-        Authorization: `Bearer ${apiKey}`,
-    },
-})
-    .then((response) => {
-        // Handle the response from M-Pesa API, which may include a payment URL or payment details
-        console.log(response.data);
-    })
-    .catch((error) => {
-        // Handle any errors that occur during the payment request
-        console.error(error);
-    });
+// axios.post(mpesaEndpoint, paymentData, {
+//     headers: {
+//         Authorization: `Bearer ${apiKey}`,
+//     },
+// })
+//     .then((response) => {
+//         // Handle the response from M-Pesa API, which may include a payment URL or payment details
+//         console.log(response.data);
+//     })
+//     .catch((error) => {
+//         // Handle any errors that occur during the payment request
+//         console.error(error);
+//     });
 
 
 
