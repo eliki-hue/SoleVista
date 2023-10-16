@@ -35,6 +35,7 @@ header .shopping{
     /* text-align: right; */
     display: flex;
     justify-content: right;
+    z-index: 99;
 }
 .cart-card{
     position: fixed;
