@@ -21,91 +21,169 @@ let products = [
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/1.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/3.jpeg',
         price:3000
     },
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/17.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/4.jpeg',
         price:3000
     },
     {
         id:4,
         name :'product name 4',
-        image:'scroll.jpeg',
+        image:'../images/shoes/5.jpeg',
         price:4000
     },
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/5.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/6.jpeg',
         price:3000
     },
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/7.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/8.jpeg',
         price:3000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/9.jpeg',
         price:3000
     },
     {
         id:4,
         name :'product name 4',
-        image:'scroll.jpeg',
+        image:'../images/shoes/10.jpeg',
         price:4000
     },
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/11.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/13.jpeg',
         price:3000
     },
     {
         id:1,
         name :'product name 1',
-        image:'bulb.jpeg',
+        image:'../images/shoes/14.jpeg',
         price:1000
     },
     {
         id:3,
         name :'product name 3',
-        image:'comp.jpeg',
+        image:'../images/shoes/15.jpeg',
+        price:3000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/16.jpeg',
+        price:3000
+    },
+    {
+        id:4,
+        name :'product name 4',
+        image:'../images/shoes/17.jpeg',
+        price:4000
+    },
+    {
+        id:1,
+        name :'product name 1',
+        image:'../images/shoes/18.jpeg',
+        price:1000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/19.jpeg',
+        price:3000
+    },
+    {
+        id:1,
+        name :'product name 1',
+        image:'../images/shoes/20.jpeg',
+        price:1000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/21.jpeg',
+        price:3000
+    },
+    {
+        id:4,
+        name :'product name 4',
+        image:'../images/shoes/22.jpeg',
+        price:4000
+    },
+    {
+        id:1,
+        name :'product name 1',
+        image:'../images/shoes/23.jpeg',
+        price:1000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/24.jpeg',
+        price:3000
+    },
+    {
+        id:1,
+        name :'product name 1',
+        image:'../images/shoes/25.jpeg',
+        price:1000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/2.jpeg',
+        price:3000
+    },
+    {
+        id:1,
+        name :'product name 1',
+        image:'../images/shoes/23.jpeg',
+        price:1000
+    },
+    {
+        id:3,
+        name :'product name 3',
+        image:'../images/shoes/24.jpeg',
         price:3000
     },
 ]
@@ -218,10 +296,10 @@ const cartItem = [];
 //     document.querySelector('.total-cost').textContent = `$${totalCost.toFixed(2)}`;
 // }
 
-// function removeCartItem(index) {
-//     cartItem.splice(index, 1); // Remove the item at the specified index
-//     updateCartDisplay(); // Update the cart display after removal
-// }
+function removeCartItem(index) {
+    cartItem.splice(index, 1); // Remove the item at the specified index
+    updateCartDisplay(); // Update the cart display after removal
+}
 
 
 // ... (previous code)
